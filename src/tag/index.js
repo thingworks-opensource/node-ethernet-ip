@@ -390,6 +390,9 @@ class Tag extends EventEmitter {
                 this.controller_value =
                     (data.readInt32LE(2) & (1 << tag.bitIndex)) == 0 ? false : true;
                 break;
+            case 672:
+                this.controller_value = data.toString('ascii', 8);
+                break;
             default:
                 throw new Error(
                     "Data Type other than SINT, INT, DINT, or BIT_STRING returned when a Bit Index was requested"
